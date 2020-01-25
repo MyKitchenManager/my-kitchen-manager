@@ -9,4 +9,9 @@ public class MyKitchenManagerController {
     public String index() {
         return "Greetings from Spring Boot!";
     }
+
+    @RequestMapping("/welcome")
+    public String welcome () {
+        return "This is a welcome from MyKitchenManager";
+    }
 }
