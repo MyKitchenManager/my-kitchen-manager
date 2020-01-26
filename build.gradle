@@ -27,11 +27,14 @@ dependencies {
 	}
 }
 
+def dbHost = System.getenv("DB_HOST")!= null ? System.getenv("DB_HOST") : "127.0.0.1"
+def dbUser = System.getenv("DB_USER")!= null ? System.getenv("DB_USER") : "root"
+def dbPassword = System.getenv("DB_PASSWORD")!= null ? System.getenv("DB_PASSWORD") : "myKitchenManager"
+def dbSchema = System.getenv("DB_SCHEMA")!= null ? System.getenv("DB_SCHEMA") : "my-kitchen-manager"
+
 flyway {
-	user = 'root'
-	password = 'myKitchenManager'
-	url = 'jdbc:mysql://127.0.0.1:3306/'
-	schemas = ['my-kitchen-manager']
+	url = "jdbc:mysql://${dbUser}:${dbPassword}@${dbHost}"
+	schemas = ["${dbSchema}"]
 }
 
 test {
