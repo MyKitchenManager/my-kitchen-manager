@@ -1,0 +1,37 @@
+version: "3"
+services:
+  mysql:
+    image: mysql:5.6
+    tmpfs: /tmpfs
+    volumes:
+      - ./data/src/docker/mysql/mysql_init.sql:/docker-entrypoint-initdb.d/mysql_init.sql:ro
+      - ./data/src/docker/mysql/mysql-57-reckless.cnf:/etc/mysql/conf.d/custom.cnf:ro
+    environment:
+      MYSQL_USER: devusr
+      MYSQL_PASSWORD: myKitchenManager
+      MYSQL_ROOT_PASSWORD: myKitchenManager
+      SERVICE_6379_CHECK_TCP: "true"
+      VIRTUAL_HOST: mysql.mykitchenmanager.localtest
+      TZ: UTC
+    expose:
+      - "3306"
+    ports:
+      - "3306:3306"
+    networks:
+      default:
+        aliases:
+          - mysql.mykitchenmanager.localtest
+
+  flyway:
+    build: ./data/src/docker/flyway
+    depends_on:
+      - mysql
+    links:
+      - mysql
+    environment:
+      FLYWAY_URL: jdbc:mysql://mysql:3306/paylater?createDatabaseIfNotExist=true
+      FLYWAY_USER: devusr
+      FLYWAY_PASSWORD: loh1Uego
+    volumes:
+      - ./data/src/main/resources/db/migration:/flyway/sql
+      - ./data/src/docker/flyway-callbacks:/flyway/callbacks
