@@ -1,7 +1,7 @@
 version: "3"
 services:
   mysql:
-    image: mysql:8.0
+    image: mysql:5.6
     tmpfs: /tmpfs
     volumes:
       - ./data/src/docker/mysql/mysql_init.sql:/docker-entrypoint-initdb.d/mysql_init.sql:ro
