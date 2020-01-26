@@ -33,7 +33,7 @@ def dbPassword = System.getenv("DB_PASSWORD")!= null ? System.getenv("DB_PASSWOR
 def dbSchema = System.getenv("DB_SCHEMA")!= null ? System.getenv("DB_SCHEMA") : "my-kitchen-manager"
 
 flyway {
-	url = "jdbc:mysql://${dbUser}:${dbPassword}@${dbHost}"
+	url = "jdbc:mysql://${dbUser}:${dbPassword}@${dbHost}/${dbSchema}?reconnect=true"
 	schemas = ["${dbSchema}"]
 }
 
