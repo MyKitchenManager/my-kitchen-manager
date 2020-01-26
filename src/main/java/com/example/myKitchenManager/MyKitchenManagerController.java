@@ -14,4 +14,9 @@ public class MyKitchenManagerController {
     public String welcome () {
         return "This is a welcome from MyKitchenManager";
     }
+
+    @RequestMapping("/login")
+    public String login () {
+        return "This is a page for user to log in";
+    }
 }
