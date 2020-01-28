@@ -1,2 +1,2 @@
 release: ./gradlew flywayMigrate -i
-web: SERVER_PORT=$PORT ./gradlew bootRun
+web: java -Dserver.port=$PORT $JAVA_OPTS -jar ./build/libs/my-kitchen-manager-0.0.1-SNAPSHOT.jar
