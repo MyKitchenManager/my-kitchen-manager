@@ -31,7 +31,7 @@ dependencies {
 	}
 }
 
-def dbHost = System.getenv("DB_HOST")!= null ? System.getenv("DB_HOST") : "127.0.0.1:3308"
+def dbHost = System.getenv("DB_HOST")!= null ? System.getenv("DB_HOST") : "127.0.0.1"
 def dbUser = System.getenv("DB_USER")!= null ? System.getenv("DB_USER") : "root"
 def dbPassword = System.getenv("DB_PASSWORD")!= null ? System.getenv("DB_PASSWORD") : "myKitchenManager"
 def dbSchema = System.getenv("DB_SCHEMA")!= null ? System.getenv("DB_SCHEMA") : "my_kitchen_manager"
