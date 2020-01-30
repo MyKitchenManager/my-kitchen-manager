@@ -4,7 +4,7 @@
 ```aidl
 $ cd my-kitchen-manager
 $ docker-compose up -d mysql
-$ ./gradlew flywayMigration -i
+$ ./gradlew flywayMigrate -i
 ```
 
 local mysql
