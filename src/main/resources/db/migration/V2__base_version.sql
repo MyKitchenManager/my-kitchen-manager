@@ -1,3 +1,7 @@
+ALTER TABLE inventory MODIFY expiration_date timestamp NULL NOT NULL;
+ALTER TABLE recipe_details MODIFY ingredient_volume float;
+ALTER TABLE inventory MODIFY inventory_volume float;
+
 INSERT INTO `recipe` (`recipe_id`, `recipe_category`, `is_vegetarian`,`is_vegan`,`contains_diary`,`is_gluten_free`,`contributor_id`,`recipe_image_url`,`instructions`,`prep_time`,`times_cooked`)
 VALUES
     ('1',NULL,'0','0','1','0',NULL,'https://www.edamam.com/web-img/a23/a2300a1c6b33bee0963f380782d48e27.jpg','Placeholder for now. No good data from API','0','0'),
@@ -107,5 +111,5 @@ VALUES
   ('4','311','0','12'),
   ('9','365','1.45','12');
 
-ALTER TABLE inventory MODIFY expiration_date timestamp NULL NOT NULL;
+
 

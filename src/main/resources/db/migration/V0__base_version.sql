@@ -71,7 +71,7 @@ create table recipe_details (
     recipe_details_id integer NOT NULL AUTO_INCREMENT,
     recipe_id integer ,
     ingredient_id integer ,
-    ingredient_volume float,
+    ingredient_volume integer,
     units_of_measure integer ,
     PRIMARY KEY (recipe_details_id),
     FOREIGN KEY (recipe_id) REFERENCES recipe(recipe_id),
