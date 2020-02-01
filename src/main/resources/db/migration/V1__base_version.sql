@@ -607,6 +607,10 @@ VALUES
   ('2020-01-28 12:00:05','myKitchenManager','M','0','0','0','0','tzzxcwj@gmail.com','60','Wenjie','Chen','wenjie'),
   ('2020-01-28 12:00:06','myKitchenManager','M','0','0','0','0','liruifeng2408@gmail.com','60','RuiFeng','Li','ruifeng'),
   ('2020-01-28 12:00:07','myKitchenManager','M','0','0','0','0','maxwillx@gmail.com','60','Yi','Xiao','yi'),
+<<<<<<< HEAD
   ('2020-01-28 12:00:08','myKitchenManager','M','0','0','0','0','test@gmail.com','60','test','test','test');
 
 
+=======
+  ('2020-01-28 12:00:08','myKitchenManager','M','0','0','0','0','test@gmail.com','60','test','test','test');
+>>>>>>> master
