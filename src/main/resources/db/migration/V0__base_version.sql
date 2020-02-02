@@ -84,7 +84,7 @@ create table inventory (
    inventory_id integer NOT NULL AUTO_INCREMENT,
    ingredient_id integer ,
    purchase_date timestamp,
-   expiration_date timestamp,
+   expiration_date timestamp  NOT NULL,
    inventory_volume integer,
    units_of_measure integer ,
    member_id integer ,

@@ -8,6 +8,8 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.web.bind.annotation.*;
 import com.example.myKitchenManager.repository.UserRepository;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("/users")
 public class UserController {
@@ -31,11 +33,10 @@ public class UserController {
     public void login(@RequestBody String userName, @RequestBody String password) {
     }
 
-
-//    @GetMapping("/user")
-//    public List<User> allUsers() {
-//        return usersRepository.findAll();
-//    }
-//
+//Testing
+    @GetMapping("/user")
+    public List<Users> allUsers() {
+        return usersRepository.findAll();
+    }
 
 }

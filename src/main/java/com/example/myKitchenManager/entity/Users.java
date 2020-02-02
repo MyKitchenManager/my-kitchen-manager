@@ -1,6 +1,7 @@
 package com.example.myKitchenManager.entity;
 
 import javax.persistence.*;
+import javax.persistence.criteria.CriteriaBuilder;
 import java.sql.Timestamp;
 import java.util.List;
 
@@ -11,6 +12,10 @@ public class Users {
 
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY) @Column(name="member_id")
     private int userId;
+
+//    @OneToMany(cascade = CascadeType.ALL)
+//    @JoinColumn(name = "member_id", nullable = true, updatable = false, insertable = false)
+//    protected Ingredient userIdInventory;
 
     @Column(name="singup_date")
     private java.sql.Timestamp signupDate;
