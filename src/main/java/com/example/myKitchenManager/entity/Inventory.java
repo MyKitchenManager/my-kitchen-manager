@@ -20,10 +20,12 @@ public class Inventory{
     )
     private int ingredientId;
 
-    @ManyToOne(cascade = CascadeType.ALL)
+    //@ManyToOne(cascade = CascadeType.ALL)
+    //@ManyToOne(cascade = CascadeType.REMOVE)
+    @ManyToOne(cascade= {CascadeType.PERSIST, CascadeType.REMOVE}, fetch=FetchType.EAGER)
     @JoinColumn(
             name = "ingredient_id",
-            nullable = true,
+            nullable = false,
             updatable = false,
             insertable = false
     )
@@ -52,10 +54,13 @@ public class Inventory{
     )
     private int unitsOfMeasure;
 
-    @ManyToOne(cascade = CascadeType.ALL)
+    //@ManyToOne(cascade = CascadeType.ALL)
+    //@ManyToOne(cascade = CascadeType.REMOVE)
+    @ManyToOne(cascade= {CascadeType.PERSIST, CascadeType.REMOVE}, fetch=FetchType.EAGER)
     @JoinColumn(
+            //name = "list_entry_id",//!!!!
             name = "units_of_measure",
-            nullable = true,
+            nullable = false,
             updatable = false,
             insertable = false
     )
@@ -66,10 +71,12 @@ public class Inventory{
     )
     private int userId;
 
-    @ManyToOne(cascade = CascadeType.ALL)
+   // @ManyToOne(cascade = CascadeType.ALL)
+    //@ManyToOne(cascade = CascadeType.REMOVE)
+    @ManyToOne(cascade= {CascadeType.PERSIST, CascadeType.REMOVE}, fetch=FetchType.EAGER)
     @JoinColumn(
             name = "member_id",
-            nullable = true,
+            nullable = false,
             updatable = false,
             insertable = false
     )
