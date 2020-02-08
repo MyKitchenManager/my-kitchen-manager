@@ -52,9 +52,9 @@ public class InventoryController {
     @RequestMapping(method = RequestMethod.DELETE, value = "inventoryId/{inventoryId}")
     public ResponseEntity<?> removeInventory(@PathVariable int inventoryId){
         try{
-     //       inventoryRepository.deleteByInventoryId(inventoryId);
-            Inventory newInventory = inventoryRepository.findByInventoryId(inventoryId);
-            inventoryRepository.delete(newInventory);
+            inventoryRepository.deleteByInventoryId(inventoryId);
+            //Inventory newInventory = inventoryRepository.findByInventoryId(inventoryId);
+            //inventoryRepository.delete(newInventory);
             return Util.createResponseEntity("Data deleted successfully", HttpStatus.ACCEPTED);
         }catch (Exception e){
             return Util.createResponseEntity("Resource not found", HttpStatus.NOT_FOUND);
