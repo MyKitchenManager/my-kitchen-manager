@@ -5,8 +5,8 @@ import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
-import jdk.jfr.DataAmount;
-import lombok.Data;
+//import jdk.jfr.DataAmount;
+//import lombok.Data;
 
 import javax.persistence.*;
 import java.util.Date;

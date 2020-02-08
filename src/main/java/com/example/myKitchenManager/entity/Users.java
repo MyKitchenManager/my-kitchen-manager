@@ -2,8 +2,8 @@ package com.example.myKitchenManager.entity;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import lombok.Data;
-import lombok.EqualsAndHashCode;
+//import lombok.Data;
+//import lombok.EqualsAndHashCode;
 
 import javax.persistence.*;
 import javax.persistence.criteria.CriteriaBuilder;
