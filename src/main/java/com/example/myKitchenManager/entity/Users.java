@@ -60,7 +60,6 @@ public class Users {
     @Column(name="user_name", unique = true)
     private String userName;
 
-    //@JsonBackReference
     @OneToMany(mappedBy="userIdJoin", cascade = CascadeType.ALL)
     private List<Inventory> InventoryList;
 
