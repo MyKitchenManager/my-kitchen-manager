@@ -4,6 +4,7 @@ import com.example.myKitchenManager.entity.Users;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.userdetails.User;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.web.bind.annotation.*;
 import com.example.myKitchenManager.repository.UserRepository;
@@ -29,9 +30,11 @@ public class UserController {
         usersRepository.save(users);
         return new ResponseEntity<>(HttpStatus.OK);
     }
-    @GetMapping("/login")
-    public void login(@RequestBody String userName, @RequestBody String password) {
-    }
+//    @GetMapping("/login")
+//    public Users login(@RequestBody String userName, @RequestBody String password) {
+//        if (re)
+//        return usersRepository.findByUserName(String userName);
+//    }
 
 //Testing
     @GetMapping("/user")
