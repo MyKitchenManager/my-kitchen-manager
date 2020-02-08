@@ -1,9 +1,11 @@
 package com.example.myKitchenManager.controller;
 
 import com.example.myKitchenManager.entity.Inventory;
+import com.example.myKitchenManager.entity.Users;
 import com.example.myKitchenManager.repository.InventoryRepository;
 //import com.mysql.cj.Session;
 //import com.mysql.cj.xdevapi.Session;
+import com.example.myKitchenManager.repository.UserRepository;
 import org.hibernate.Session;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -20,6 +22,9 @@ public class InventoryController {
 
     @Autowired
     InventoryRepository inventoryRepository;
+
+    @Autowired
+    UserRepository userRepository;
 
     //Add method
    // @PostMapping("/add")
@@ -59,6 +64,12 @@ public class InventoryController {
         }catch (Exception e){
             return Util.createResponseEntity("Resource not found", HttpStatus.NOT_FOUND);
         }
+    }
+    //Get inventory list for a specific user
+    @RequestMapping(method = RequestMethod.GET, value = "userId/{userId}")
+    public List<Inventory> getUserInventory(@PathVariable int userId) {
+        Users user = userRepository.findByUserId(userId);
+        return user.getInventoryList();
     }
 
 //    private  boolean deleteByInventoryId(Class<?> type, Serializable id) {

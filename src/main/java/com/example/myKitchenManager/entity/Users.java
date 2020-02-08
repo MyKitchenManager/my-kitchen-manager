@@ -55,8 +55,15 @@ public class Users {
     @Column(name="user_name", unique = true)
     private String userName;
 
+    @OneToMany(mappedBy="userIdJoin")
+    private List<Inventory> InventoryList;
+
     public Users() {
 
+    }
+
+    public List<Inventory> getInventoryList() {
+        return InventoryList;
     }
 
     public Users(Timestamp signupDate, String password, Character gender, boolean isVegetarian, boolean isVegan, boolean isLactoseIntolerant, boolean isGlutenFree, String emailAddress, int nationality, String firstName, String lastName, String userName) {
