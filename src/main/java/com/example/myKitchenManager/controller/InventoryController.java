@@ -6,11 +6,14 @@ import com.example.myKitchenManager.repository.InventoryRepository;
 //import com.mysql.cj.xdevapi.Session;
 import org.hibernate.Session;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.jpa.repository.Modifying;
+import org.springframework.data.jpa.repository.Query;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import com.example.myKitchenManager.util.Util;
 
+import javax.transaction.Transactional;
 import java.io.Serializable;
 import java.util.List;
 
@@ -52,9 +55,10 @@ public class InventoryController {
     @RequestMapping(method = RequestMethod.DELETE, value = "inventoryId/{inventoryId}")
     public ResponseEntity<?> removeInventory(@PathVariable int inventoryId){
         try{
-     //       inventoryRepository.deleteByInventoryId(inventoryId);
-            Inventory newInventory = inventoryRepository.findByInventoryId(inventoryId);
-            inventoryRepository.delete(newInventory);
+
+            inventoryRepository.deleteByInventoryId(inventoryId);
+            //Inventory newInventory = inventoryRepository.findByInventoryId(inventoryId);
+            //inventoryRepository.delete(newInventory);
             return Util.createResponseEntity("Data deleted successfully", HttpStatus.ACCEPTED);
         }catch (Exception e){
             return Util.createResponseEntity("Resource not found", HttpStatus.NOT_FOUND);
