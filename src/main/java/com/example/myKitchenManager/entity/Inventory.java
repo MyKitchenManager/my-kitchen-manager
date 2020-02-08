@@ -1,6 +1,13 @@
 package com.example.myKitchenManager.entity;
 
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+import jdk.jfr.DataAmount;
+import lombok.Data;
+
 import javax.persistence.*;
 import java.util.Date;
 import java.sql.Timestamp;
@@ -71,9 +78,10 @@ public class Inventory{
     )
     private int userId;
 
-   // @ManyToOne(cascade = CascadeType.ALL)
-    //@ManyToOne(cascade = CascadeType.REMOVE)
-    @ManyToOne(cascade= {CascadeType.PERSIST, CascadeType.REMOVE}, fetch=FetchType.EAGER)
+//    @ManyToOne(cascade = CascadeType.ALL)
+//    @ManyToOne(cascade = CascadeType.REMOVE)
+    @JsonIgnore
+    @ManyToOne(fetch = FetchType.LAZY)//(cascade= {CascadeType.PERSIST, CascadeType.REMOVE}, fetch=FetchType.LAZY)
     @JoinColumn(
             name = "member_id",
             nullable = false,

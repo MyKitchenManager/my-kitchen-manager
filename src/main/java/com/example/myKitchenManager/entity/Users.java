@@ -1,5 +1,10 @@
 package com.example.myKitchenManager.entity;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import lombok.Data;
+import lombok.EqualsAndHashCode;
+
 import javax.persistence.*;
 import javax.persistence.criteria.CriteriaBuilder;
 import java.sql.Timestamp;
@@ -55,7 +60,8 @@ public class Users {
     @Column(name="user_name", unique = true)
     private String userName;
 
-    @OneToMany(mappedBy="userIdJoin")
+    //@JsonBackReference
+    @OneToMany(mappedBy="userIdJoin", cascade = CascadeType.ALL)
     private List<Inventory> InventoryList;
 
     public Users() {
