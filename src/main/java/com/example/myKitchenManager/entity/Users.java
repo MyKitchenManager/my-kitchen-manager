@@ -63,8 +63,15 @@ public class Users {
     @OneToMany(mappedBy="userIdJoin", cascade = CascadeType.ALL)
     private List<Inventory> InventoryList;
 
+    @OneToMany(mappedBy="userIdJoin", cascade = CascadeType.ALL)
+    private List<MealPlan> MealPlanList;
+
     public Users() {
 
+    }
+
+    public List<MealPlan> getMealPlanList() {
+        return MealPlanList;
     }
 
     public List<Inventory> getInventoryList() {
