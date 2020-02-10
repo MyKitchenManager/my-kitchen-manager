@@ -18,14 +18,17 @@ public class UserController {
     @Autowired
     UserRepository usersRepository;
 
+    //Encrypt the password before saving to the DB to improve security
     @Autowired
     private BCryptPasswordEncoder bCryptPasswordEncoder;
 
     @PostMapping("/register")
     public ResponseEntity register(@RequestBody Users users) {
+        //Check if the username is already used
         if (usersRepository.findByUserName(users.getUserName()) != null) {
             return new ResponseEntity<>(HttpStatus.IM_USED);
         }
+        //if username is available, go ahead and create user
         users.setPassword(bCryptPasswordEncoder.encode(users.getPassword()));
         usersRepository.save(users);
         return new ResponseEntity<>(HttpStatus.OK);

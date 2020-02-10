@@ -32,13 +32,19 @@ public class MealPlanController {
     @Autowired
     UserRepository userRepository;
 
-    //Allow adding multiple meals to the meal plan
+    /**
+     * Allow adding multiple meals to the meal plan
+     * Take a JsonArray as input
+     */
     @PostMapping("/add")
     public void addToMealPlan(@RequestBody List<MealPlan> payload) {
         for (MealPlan mealPlan : payload) {
             mealPlanRepository.save(mealPlan);
         }
     }
+    /**
+     * Get the list of meal plans for a specific user
+     */
     @GetMapping("/{userId}")
     public List<MealPlan> getMealPlan(@PathVariable int userId) {
         Users user = userRepository.findByUserId(userId);
