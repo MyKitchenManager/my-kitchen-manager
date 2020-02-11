@@ -3,18 +3,11 @@ package com.example.myKitchenManager.controller;
 import com.example.myKitchenManager.entity.Inventory;
 import com.example.myKitchenManager.entity.Users;
 import com.example.myKitchenManager.repository.InventoryRepository;
-//import com.mysql.cj.Session;
-//import com.mysql.cj.xdevapi.Session;
 import com.example.myKitchenManager.repository.UserRepository;
-import org.hibernate.Session;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.web.bind.annotation.*;
-import com.example.myKitchenManager.util.Util;
-
-import java.io.Serializable;
-import java.util.List;
 
 @RestControllerAdvice
 @RequestMapping("/inventory")
@@ -29,15 +22,21 @@ public class InventoryController {
     //Add method
    // @PostMapping("/add")
     @RequestMapping(method = RequestMethod.POST)
-    public ResponseEntity addInventory(@RequestBody Inventory inventory){
+    public ResponseEntity addInventory(@RequestBody Inventory inventory, UsernamePasswordAuthenticationToken authentication){
+        if (inventory.getUserId() != userRepository.findByUserName(authentication.getName()).getUserId()) {
+            return ResponseEntity.badRequest().body("Cannot save to other user's inventory");
+        }
         inventoryRepository.save(inventory);
         //return new ResponseEntity<>(HttpStatus.OK);
-        return Util.createResponseEntity("Successful creation of a resource", HttpStatus.CREATED);
+        return ResponseEntity.ok("Successful creation of a resource");
     }
 
     //Update method
     @RequestMapping(method = RequestMethod.PUT, value = "inventoryId/{inventoryId}")
-    public ResponseEntity updateInventory(@RequestBody Inventory inventory, @PathVariable int inventoryId){
+    public ResponseEntity updateInventory(@RequestBody Inventory inventory, @PathVariable int inventoryId, UsernamePasswordAuthenticationToken authentication){
+        if (inventory.getUserId() != userRepository.findByUserName(authentication.getName()).getUserId()) {
+            return ResponseEntity.badRequest().body("Cannot update other user's inventory");
+        }
         Inventory newInventory = inventoryRepository.findByInventoryId(inventoryId);
         if(newInventory != null){
             newInventory.setIngredientId(inventory.getIngredientId());
@@ -47,43 +46,33 @@ public class InventoryController {
             newInventory.setUnitsOfMeasure(inventory.getUnitsOfMeasure());
             newInventory.setUserId(inventory.getUserId());
             if(inventoryRepository.save(newInventory).getInventoryId() == inventoryId){
-                return Util.createResponseEntity("Data updated successfully", HttpStatus.OK);
+                return ResponseEntity.ok("Data updated successfully");
             }
         }
-        return Util.createResponseEntity("Error updating data", HttpStatus.NOT_FOUND);
+        return ResponseEntity.badRequest().body("Error updating data");
     }
 
     //Delete method
     @RequestMapping(method = RequestMethod.DELETE, value = "inventoryId/{inventoryId}")
-    public ResponseEntity<?> removeInventory(@PathVariable int inventoryId){
+    public ResponseEntity removeInventory(@PathVariable int inventoryId, UsernamePasswordAuthenticationToken authentication){
+        Inventory inventory = inventoryRepository.findByInventoryId(inventoryId);
+        if (inventory.getUserId() != userRepository.findByUserName(authentication.getName()).getUserId()) {
+            return ResponseEntity.badRequest().body("Cannot delete other user's inventory");
+        }
         try{
             inventoryRepository.deleteByInventoryId(inventoryId);
-            //Inventory newInventory = inventoryRepository.findByInventoryId(inventoryId);
-            //inventoryRepository.delete(newInventory);
-            return Util.createResponseEntity("Data deleted successfully", HttpStatus.ACCEPTED);
+            return ResponseEntity.accepted().body("Inventory deleted successfully");
         }catch (Exception e){
-            return Util.createResponseEntity("Resource not found", HttpStatus.NOT_FOUND);
+            return ResponseEntity.notFound().build();
         }
     }
     //Get inventory list for a specific user
     @RequestMapping(method = RequestMethod.GET, value = "userId/{userId}")
-    public List<Inventory> getUserInventory(@PathVariable int userId) {
+    public ResponseEntity getUserInventory(@PathVariable int userId, UsernamePasswordAuthenticationToken authentication) {
+        if (userId != userRepository.findByUserName(authentication.getName()).getUserId()) {
+            return ResponseEntity.badRequest().body("Cannot get other user's inventory");
+        }
         Users user = userRepository.findByUserId(userId);
-        return user.getInventoryList();
-    }
-
-//    private  boolean deleteByInventoryId(Class<?> type, Serializable id) {
-//        Object persistentInstance = Session.load(type, id);
-//        //Object persistentInstance = Session.load(
-//        if (persistentInstance != null) {
-//        Session.delete(persistentInstance);
-//        return true;
-//        }
-//        return false;
-//    }
-    //Testing
-    @GetMapping("getInventory")
-    public List<Inventory> allInventory(){
-        return inventoryRepository.findAll();
+        return ResponseEntity.ok(user.getInventoryList());
     }
 }

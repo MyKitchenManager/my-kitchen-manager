@@ -26,23 +26,12 @@ public class UserController {
     public ResponseEntity register(@RequestBody Users users) {
         //Check if the username is already used
         if (usersRepository.findByUserName(users.getUserName()) != null) {
-            return new ResponseEntity<>(HttpStatus.IM_USED);
+            return ResponseEntity.badRequest().body("Username occupied");
         }
         //if username is available, go ahead and create user
         users.setPassword(bCryptPasswordEncoder.encode(users.getPassword()));
         usersRepository.save(users);
-        return new ResponseEntity<>(HttpStatus.OK);
-    }
-//    @GetMapping("/login")
-//    public Users login(@RequestBody String userName, @RequestBody String password) {
-//        if (re)
-//        return usersRepository.findByUserName(String userName);
-//    }
-
-//Testing
-    @GetMapping("/user")
-    public List<Users> allUsers() {
-        return usersRepository.findAll();
+        return ResponseEntity.ok("User successfully created");
     }
 
 }
