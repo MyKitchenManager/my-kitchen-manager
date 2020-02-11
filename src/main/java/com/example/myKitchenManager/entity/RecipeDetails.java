@@ -37,6 +37,15 @@ public class RecipeDetails {
     )
     private int ingredientId;
 
+    @ManyToOne(cascade= {CascadeType.PERSIST, CascadeType.REMOVE}, fetch=FetchType.EAGER)
+    @JoinColumn(
+            name = "ingredient_id",
+            nullable = false,
+            updatable = false,
+            insertable = false
+    )
+    private Ingredient ingredientIdJoin;
+
     @Column(
             name = "ingredient_volume"
     )
@@ -60,6 +69,10 @@ public class RecipeDetails {
     private ListEntry unitsOfMeasureListEntry;
 
     public RecipeDetails() {
+    }
+
+    public Ingredient getIngredientIdJoin() {
+        return ingredientIdJoin;
     }
 
     public int getId() {
