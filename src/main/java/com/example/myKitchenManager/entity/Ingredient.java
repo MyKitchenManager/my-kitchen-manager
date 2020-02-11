@@ -71,4 +71,21 @@ public class Ingredient {
     public void setImageUrl(String imageUrl) {
         this.imageUrl = imageUrl;
     }
+
+    @Override
+    public boolean equals(Object o) {
+        if (!(o instanceof Ingredient)) {
+            return false;
+        }
+        Ingredient another = (Ingredient) o;
+        if (another.getIngredientId() == this.getIngredientId()) {
+            return true;
+        }
+        return false;
+    }
+
+    @Override
+    public int hashCode() {
+        return this.getIngredientId() * 37;
+    }
 }
