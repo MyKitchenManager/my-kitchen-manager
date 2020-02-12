@@ -19,7 +19,7 @@ public interface InventoryRepository extends JpaRepository<Inventory, Integer> {
     @Modifying
     @Transactional
     @Query(
-            value  = "delete from heroku_1154234bca1b79d.inventory i where i.inventory_id = ?1",
+            value  = "delete from inventory where inventory.inventory_id = ?1",
             nativeQuery = true
     )
     void deleteByInventoryId(int inventoryId);
