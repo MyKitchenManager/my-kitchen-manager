@@ -15,10 +15,11 @@ public interface InventoryRepository extends JpaRepository<Inventory, Integer> {
 //    Users findByUserId(int userId);
 //    Users findByUserName(String userName);
     Inventory findByInventoryId(int inventoryId);
+    String table_name = System.getenv("DB_SCHEMA");
     @Modifying
     @Transactional
     @Query(
-            value  = "delete from my_kitchen_manager.inventory i where i.inventory_id = ?1",
+            value  = "delete from heroku_1154234bca1b79d.inventory i where i.inventory_id = ?1",
             nativeQuery = true
     )
     void deleteByInventoryId(int inventoryId);
