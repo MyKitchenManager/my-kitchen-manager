@@ -1,7 +1,7 @@
 package com.example.myKitchenManager.controller;
 
-import com.example.myKitchenManager.entity.MealPlan;
-import com.example.myKitchenManager.entity.Users;
+import com.example.myKitchenManager.entity.*;
+import com.example.myKitchenManager.repository.InventoryRepository;
 import com.example.myKitchenManager.repository.MealPlanRepository;
 import com.example.myKitchenManager.repository.UserRepository;
 import com.fasterxml.jackson.core.JsonProcessingException;
@@ -33,6 +33,9 @@ public class MealPlanController {
     @Autowired
     UserRepository userRepository;
 
+    @Autowired
+    InventoryRepository inventoryRepository;
+
     /**
      * Allow adding multiple meals to the meal plan
      * Take a JsonArray as input
@@ -62,6 +65,7 @@ public class MealPlanController {
         Users user = userRepository.findByUserId(userId);
         return ResponseEntity.ok(user.getMealPlanList());
     }
+
 
 //    @GetMapping("/{userId}/{offset}")
 //    public List<MealPlan> getMealPlan(@PathVariable int userId, @PathVariable int offset) {

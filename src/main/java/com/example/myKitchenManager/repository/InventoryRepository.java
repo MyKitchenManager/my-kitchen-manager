@@ -22,4 +22,5 @@ public interface InventoryRepository extends JpaRepository<Inventory, Integer> {
             nativeQuery = true
     )
     void deleteByInventoryId(int inventoryId);
+    Inventory findByIngredientIdAndUserId(int ingredientId, int userId);
 }

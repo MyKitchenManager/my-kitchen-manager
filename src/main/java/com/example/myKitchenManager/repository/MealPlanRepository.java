@@ -9,4 +9,5 @@ import java.util.List;
 
 @Repository
 public interface MealPlanRepository extends JpaRepository<MealPlan, Integer>{
+    public MealPlan findByMealPlanId(int mealPlanId);
 }
