@@ -18,7 +18,7 @@ public interface InventoryRepository extends JpaRepository<Inventory, Integer> {
     @Modifying
     @Transactional
     @Query(
-            value  = "delete from inventory i where i.inventory_id = ?1",
+            value  = "delete from my_kitchen_manager.inventory i where i.inventory_id = ?1",
             nativeQuery = true
     )
     void deleteByInventoryId(int inventoryId);
