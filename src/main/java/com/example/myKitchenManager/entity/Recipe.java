@@ -43,13 +43,23 @@ public class Recipe {
     )
     private int timesCooked;
 
+    @Column(
+            name = "instructions"
+    )
+    private String instructions;
+
+    @Column(
+            name = "recipe_name"
+    )
+    private String recipeName;
+
+
+
     @OneToMany(mappedBy = "recipeIdJoin", cascade = CascadeType.ALL)
     private List<RecipeDetails> recipeDetails;
 
 
-    public List<RecipeDetails> getRecipeDetails() {
-        return recipeDetails;
-    }
+
 
     public int getId() {
         return id;
@@ -97,5 +107,27 @@ public class Recipe {
 
     public void setTimesCooked(int timesCooked) {
         this.timesCooked = timesCooked;
+    }
+
+    public String getRecipeName() {
+        return recipeName;
+    }
+
+    public void setRecipeName(String recipeName) {
+        this.recipeName = recipeName;
+    }
+    public String getInstructions() {
+        return instructions;
+    }
+
+    public void setInstructions(String instructions) {
+        this.instructions = instructions;
+    }
+
+    public void setRecipeDetails(List<RecipeDetails> recipeDetails) {
+        this.recipeDetails = recipeDetails;
+    }
+    public List<RecipeDetails> getRecipeDetails() {
+        return recipeDetails;
     }
 }

@@ -66,6 +66,9 @@ public class Users {
     @OneToMany(mappedBy="userIdJoin", cascade = CascadeType.ALL)
     private List<MealPlan> MealPlanList;
 
+    @OneToMany(mappedBy="contributorIdJoin", cascade = CascadeType.ALL)
+    private List<Recipe> RecipeList;
+
     public Users() {
 
     }
@@ -77,6 +80,8 @@ public class Users {
     public List<Inventory> getInventoryList() {
         return InventoryList;
     }
+
+    public List<Recipe> getRecipeList(){ return RecipeList; }
 
     public Users(Timestamp signupDate, String password, Character gender, boolean isVegetarian, boolean isVegan, boolean isLactoseIntolerant, boolean isGlutenFree, String emailAddress, int nationality, String firstName, String lastName, String userName) {
         this.signupDate = signupDate;
