@@ -70,4 +70,9 @@ public class ListEntryController {
         }
         return ResponseEntity.ok(ingredientRepository.findByIngredientCategoryId(categoryId));
     }
+
+    @GetMapping("/ingredients")
+    public ResponseEntity getAllIngredients() {
+        return ResponseEntity.ok(ingredientRepository.findAll());
+    }
 }

@@ -57,11 +57,9 @@ public class MealPlanController {
     /**
      * Get the list of meal plans for a specific user
      */
-    @GetMapping("/{userId}")
-    public ResponseEntity getMealPlan(@PathVariable int userId, UsernamePasswordAuthenticationToken authentication) {
-        if (userId != userRepository.findByUserName(authentication.getName()).getUserId()) {
-            return ResponseEntity.badRequest().body("Cannot check other user's mealplan");
-        }
+    @GetMapping("/users")
+    public ResponseEntity getMealPlan(UsernamePasswordAuthenticationToken authentication) {
+        int userId = userRepository.findByUserName(authentication.getName()).getUserId();
         Users user = userRepository.findByUserId(userId);
         return ResponseEntity.ok(user.getMealPlanList());
     }
