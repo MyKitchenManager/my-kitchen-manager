@@ -50,12 +50,15 @@ public class RecipeController {
     @RequestMapping(method = RequestMethod.GET, value = "/details/recipeId/{recipeId}")
     public ResponseEntity getRecipeDetails(@PathVariable int recipeId, UsernamePasswordAuthenticationToken authentication){
         Integer contributorId = recipeRepository.findById(recipeId).getContributorId();
-        if(contributorId == null)  {
-            return ResponseEntity.badRequest().body("Contributor Id can Not be null");
-        }
-        if (contributorId!= userRepository.findByUserName(authentication.getName()).getUserId()) {
-            return ResponseEntity.badRequest().body("Cannot get to other user's data");
-        }
+//        if(contributorId == null)  {
+//            return ResponseEntity.badRequest().body("Contributor Id can Not be null");
+//        }
+//        if(contributorId == null) { //11 i Menglin Yu
+//            contributorId = 11;
+//        }
+//        if (contributorId!= userRepository.findByUserName(authentication.getName()).getUserId()) {
+//            return ResponseEntity.badRequest().body("Cannot get to other user's data");
+//        }
         //return recipeDetailsRepository.findByRecipeId(recipeId);
         return ResponseEntity.ok(recipeRepository.findById(recipeId).getRecipeDetails());
     }
