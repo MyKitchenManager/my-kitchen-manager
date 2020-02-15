@@ -67,11 +67,9 @@ public class InventoryController {
         }
     }
     //Get inventory list for a specific user
-    @RequestMapping(method = RequestMethod.GET, value = "userId/{userId}")
-    public ResponseEntity getUserInventory(@PathVariable int userId, UsernamePasswordAuthenticationToken authentication) {
-        if (userId != userRepository.findByUserName(authentication.getName()).getUserId()) {
-            return ResponseEntity.badRequest().body("Cannot get other user's inventory");
-        }
+    @RequestMapping(method = RequestMethod.GET, value = "users")
+    public ResponseEntity getUserInventory(UsernamePasswordAuthenticationToken authentication) {
+        int userId = userRepository.findByUserName(authentication.getName()).getUserId();
         Users user = userRepository.findByUserId(userId);
         return ResponseEntity.ok(user.getInventoryList());
     }

@@ -36,11 +36,9 @@ public class RecipeController {
     /**
      * Get the list of Recipe  for a specific users
      */
-    @RequestMapping(method = RequestMethod.GET, value = "/userId/{userId}")
-    public ResponseEntity getRecipesByUserId(@PathVariable int userId, UsernamePasswordAuthenticationToken authentication){
-        if (userId != userRepository.findByUserName(authentication.getName()).getUserId()) {
-            return ResponseEntity.badRequest().body("Cannot get other user's data");
-        }
+    @RequestMapping(method = RequestMethod.GET, value = "/users")
+    public ResponseEntity getRecipesByUserId(UsernamePasswordAuthenticationToken authentication){
+        int userId = userRepository.findByUserName(authentication.getName()).getUserId();
         Users user = userRepository.findByUserId(userId);
         return ResponseEntity.ok(user.getRecipeList());
     }
