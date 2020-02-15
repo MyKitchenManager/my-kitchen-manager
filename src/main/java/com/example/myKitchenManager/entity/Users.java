@@ -1,6 +1,12 @@
 package com.example.myKitchenManager.entity;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+//import lombok.Data;
+//import lombok.EqualsAndHashCode;
+
 import javax.persistence.*;
+import javax.persistence.criteria.CriteriaBuilder;
 import java.sql.Timestamp;
 import java.util.List;
 
@@ -11,6 +17,10 @@ public class Users {
 
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY) @Column(name="member_id")
     private int userId;
+
+//    @OneToMany(cascade = CascadeType.ALL)
+//    @JoinColumn(name = "member_id", nullable = true, updatable = false, insertable = false)
+//    protected Ingredient userIdInventory;
 
     @Column(name="singup_date")
     private java.sql.Timestamp signupDate;
@@ -50,9 +60,28 @@ public class Users {
     @Column(name="user_name", unique = true)
     private String userName;
 
+    @OneToMany(mappedBy="userIdJoin", cascade = CascadeType.ALL)
+    private List<Inventory> InventoryList;
+
+    @OneToMany(mappedBy="userIdJoin", cascade = CascadeType.ALL)
+    private List<MealPlan> MealPlanList;
+
+    @OneToMany(mappedBy="contributorIdJoin", cascade = CascadeType.ALL)
+    private List<Recipe> RecipeList;
+
     public Users() {
 
     }
+
+    public List<MealPlan> getMealPlanList() {
+        return MealPlanList;
+    }
+
+    public List<Inventory> getInventoryList() {
+        return InventoryList;
+    }
+
+    public List<Recipe> getRecipeList(){ return RecipeList; }
 
     public Users(Timestamp signupDate, String password, Character gender, boolean isVegetarian, boolean isVegan, boolean isLactoseIntolerant, boolean isGlutenFree, String emailAddress, int nationality, String firstName, String lastName, String userName) {
         this.signupDate = signupDate;
