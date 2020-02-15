@@ -1,5 +1,7 @@
 package com.example.myKitchenManager.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 import java.sql.Timestamp;
 import java.util.List;
@@ -24,6 +26,7 @@ public class Recipe {
     )
     private Integer contributorId;
 
+    @JsonIgnore
     @ManyToOne(fetch = FetchType.LAZY)//(cascade= {CascadeType.PERSIST, CascadeType.REMOVE}, fetch=FetchType.LAZY)
     @JoinColumn(
             name = "contributor_id",
