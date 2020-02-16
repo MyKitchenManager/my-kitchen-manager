@@ -56,13 +56,24 @@ public class Recipe {
     )
     private String recipeName;
 
+    @Column(
+            name = "recipe_image_url"
+    )
+    private String recipeImageUrl;
+
 
 
     @OneToMany(mappedBy = "recipeIdJoin", cascade = CascadeType.ALL)
     private List<RecipeDetails> recipeDetails;
 
 
+    public String getRecipeImageUrl() {
+        return recipeImageUrl;
+    }
 
+    public void setRecipeImageUrl(String recipeImageUrl) {
+        this.recipeImageUrl = recipeImageUrl;
+    }
 
     public int getId() {
         return id;
