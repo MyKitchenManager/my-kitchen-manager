@@ -26,6 +26,7 @@ dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter-security'
 	implementation 'mysql:mysql-connector-java:8.0.18'
 	implementation 'com.auth0:java-jwt:3.4.0'
+	implementation 'com.google.cloud:google-cloud-storage:1.17.0'
 	//implementation 'org.projectlombok:lombok'
 	testImplementation('org.springframework.boot:spring-boot-starter-test') {
 		exclude group: 'org.junit.vintage', module: 'junit-vintage-engine'
