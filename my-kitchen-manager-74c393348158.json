@@ -1,0 +1,12 @@
+{
+  "type": "service_account",
+  "project_id": "my-kitchen-manager",
+  "private_key_id": "74c393348158533eabd5c57ea2ee6e111dd0df5a",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvgIBADANBgkqhkiG9w0BAQEFAASCBKgwggSkAgEAAoIBAQCmxPOmKV/UPErL\nWsAUraFy+k/xlmnQfabQen7Cksus8P4jdTuw5ZDRTMTmxEKP+xkK+Vq8WbJpMKUf\nerhl/BMBt3XgUDpZR8G8KMqtukR7S2eNdUd+4QfkjNAXjEQ5OnervN6/iJlMqrDC\n77ySWGT+Ps/jCE76e9W8WIRoT7dwAPuifrBJp+wLPSG5U+xbNv7FhyDMcgv+T4go\nPRh5Q9j0a0MZywZT0NZ5EX3CQaGmCwP6XoooIz9j6WEgDqgILgLK/2p6tM+sQ4SW\nDTDg6T/Rhb8R5DjJTCKeC/2o7VxlfuKtjrnAd8Ic7+2MCByWCw1HsW9r2+xnW3EP\nFIL/LsPvAgMBAAECggEAPLXiRRE205qHV/RXjK+Q4LyDMd2h88ZqXebaEpdCEllB\nC0N4UXOg/rDF1YSI/sVYXohcIck9i9GrqwQP8QCNIsjY3qoWM75NpuPqtMfkekX/\nEp4pQuVE7EzezFPB2luQiTKenHdr518ULkL8EQKg8XWIVIwHxGQkcQaAXUD39Iuw\nY6wVcwV2KdLFmuOIF/vbIfqj7FLGlzj1r9IM8lAR5Ckrepgb9ztai+5v3fRL+P15\nG8F5eUdEaj2rYmWoo48Y/hrVNPP9iJIV1yKctrXeSBdwO/y4nfh57y19kkXZGkBP\nDjfoJGj45HGKaUsyX7XL1IpRYpm7BazGH/8Pc5hUwQKBgQDaaMSOkAKOxXYTkkII\nYsNDltpKI5l4gfQcGn7DlX5DukMH7o85sonpxsAHzRJho/628vq06b+QQQLaPXXP\nSvWMZOvlNJCBiTEfnsWzt5ZXD4CoRGXLTd+6C+6tJkiOeKnf389Xbhno+anfgV84\nfc1Ul6YFhaPhtqSJ/hpJprOlPwKBgQDDeOaxWN8k7Ov+nnZ8YwZFiefFAkN7R0/j\nXVezPy6LB/M6YJwbcHZPs1v0/6JMrV8i+ZWxjBFYHrx9fBzm+cjMcRDYb1quL/O+\noq2Ix1nwAwwwXju+d0UYHqoLC70KL0IO5tMJr/FqsBdvE4Ft1rMSQmb8UCgO0Sol\nh2z07FLFUQKBgQDB98eQgM70suMxcHQadHPL4/5LV6BlyKveBZ3M30g6qAH92lzy\nteALcUp74yFO+9Er81C6ONm7KDF7Vpf5GC5ImBxz+6HWmNu6pEwaVpI7EXaGefAZ\nhTiLRyuaNOS9OuZK/75pfEugf5HhAElrpzYiyWdVgiFQRN+N+dCo1la3CwKBgFCO\nAoQTm+IbwSWtKCcap/sAWgNWa3jiaonIbdvwrb2eCR6Fsc+dCSTPRZYxwzDWQd6n\n/IiusHcgM42DGGYXiii2b7rCKRyfplNptxonDWlb2CoWq4hSnqbR/EGRFNadoxuB\nBHd5ioPtDbs4zp31XNaphsd0QQ3aJQRSSxSkT3gBAoGBAMhYstebr9yFnitB1sDm\nl/P1gOjDoBVgGoNjOdfaE9Q5cru62oTyo+etww8n7vu3lQXC4isCHOvP+s9ef8uT\nENyLlPS0e66idLFHdtCE64/4HcHTSHNF0GB3uMKMbPWoltT0ZTsTy9/7yML3rIQJ\nfiRxklht/gaH4O5rZfHVRIcY\n-----END PRIVATE KEY-----\n",
+  "client_email": "my-kitchen-manager-storage@my-kitchen-manager.iam.gserviceaccount.com",
+  "client_id": "103519415643925063004",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/my-kitchen-manager-storage%40my-kitchen-manager.iam.gserviceaccount.com"
+}
