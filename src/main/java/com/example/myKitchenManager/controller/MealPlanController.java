@@ -64,6 +64,19 @@ public class MealPlanController {
         return ResponseEntity.ok(user.getMealPlanList());
     }
 
+    @DeleteMapping("/{mealPlanId}")
+    public ResponseEntity deleteMealPlan(@PathVariable int mealPlanId, UsernamePasswordAuthenticationToken authentication) {
+        MealPlan mealPlan = mealPlanRepository.findByMealPlanId(mealPlanId);
+        if (mealPlan.getUserId() != userRepository.findByUserName(authentication.getName()).getUserId()) {
+            return ResponseEntity.badRequest().body("Cannot delete other user's mealplan");
+        }
+        mealPlanRepository.deleteByMealPlanId(mealPlanId);
+        return ResponseEntity.ok("Successfully deleted from mealplan");
+
+    }
+
+
+
 
 //    @GetMapping("/{userId}/{offset}")
 //    public List<MealPlan> getMealPlan(@PathVariable int userId, @PathVariable int offset) {
