@@ -88,6 +88,13 @@ public class RecipeController {
         return ResponseEntity.ok("Successful creation of a resource" );
     }
 
+    @DeleteMapping("/{recipeId}")
+    public ResponseEntity deleteRecipes(@PathVariable int recipeId) {
+        recipeDetailsRepository.deleteByRecipeId(recipeId);
+        recipeRepository.deleteByRecipeId(recipeId);
+        return ResponseEntity.ok("Successfully deleted recipe");
+    }
+
     //Testing Add method
     @RequestMapping(method = RequestMethod.POST, value = "/details/add")
     public ResponseEntity addRecipesDetails(@RequestBody RecipeDetails recipeDetails){
