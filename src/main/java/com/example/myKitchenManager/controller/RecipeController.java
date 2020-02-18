@@ -88,32 +88,35 @@ public class RecipeController {
         return ResponseEntity.ok("Successful creation of a resource" );
     }
 
+    @DeleteMapping("/{recipeId}")
+    public ResponseEntity deleteRecipes(@PathVariable int recipeId) {
+        recipeDetailsRepository.deleteByRecipeId(recipeId);
+        recipeRepository.deleteByRecipeId(recipeId);
+        return ResponseEntity.ok("Successfully deleted recipe");
+    }
+
     //Testing Add method
     @RequestMapping(method = RequestMethod.POST, value = "/details/add")
     public ResponseEntity addRecipesDetails(@RequestBody RecipeDetails recipeDetails){
         return ResponseEntity.ok(recipeDetailsRepository.save(recipeDetails));
     }
 
-    //!!!!!!Update method--need to debug
+    //Update Recipe Method
     @RequestMapping(method = RequestMethod.PUT, value = "/update/{id}")
     public ResponseEntity updateRecipes(@RequestBody Recipe recipe, @PathVariable int id, UsernamePasswordAuthenticationToken authentication){
-        if (recipe.getContributorId() != userRepository.findByUserName(authentication.getName()).getUserId()) {
+        if (recipe.getContributorId() == null || recipe.getContributorId() != userRepository.findByUserName(authentication.getName()).getUserId()) {
             return ResponseEntity.badRequest().body("Cannot update other user's data");
         }
-        Recipe newRecipe = recipeRepository.findById(id);
-        //Optional<Recipe> newRecipe = recipeRepository.findById(id);
-        if(newRecipe != null){
-            newRecipe.setContributorId(recipe.getContributorId());
-            newRecipe.setPrepTime(recipe.getPrepTime());
-            newRecipe.setRecipeName(recipe.getRecipeName());
-            newRecipe.setTimesCooked(recipe.getTimesCooked());
-            newRecipe.setRecipeCategory(recipe.getRecipeCategory());
-            if(recipeRepository.save(newRecipe).getId() == id){
-                return ResponseEntity.ok("Data updated successfully");
-            }
+        List<RecipeDetails> details = recipe.getRecipeDetails();
+        recipe.setRecipeDetails(null);
+        recipe.setId(id);
+        recipeRepository.save(recipe);
+        recipeDetailsRepository.deleteByRecipeId(id);
+        for(int i = 0; i <details.size() ; i++){
+            RecipeDetails detailsItem = details.get(i);
+            detailsItem.setRecipeId(id);
+            recipeDetailsRepository.save(detailsItem);
         }
-        return ResponseEntity.badRequest().body("Error updating data");
+        return ResponseEntity.ok("Successfully updated recipe details");
     }
-
-
 }
