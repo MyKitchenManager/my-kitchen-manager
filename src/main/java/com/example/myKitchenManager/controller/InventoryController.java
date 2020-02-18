@@ -20,7 +20,6 @@ public class InventoryController {
     UserRepository userRepository;
 
     //Add method
-    @PostMapping("/add")
     @RequestMapping(method = RequestMethod.POST)
     public ResponseEntity addInventory(@RequestBody Inventory inventory, UsernamePasswordAuthenticationToken authentication){
         if (inventory.getUserId() != userRepository.findByUserName(authentication.getName()).getUserId()) {
