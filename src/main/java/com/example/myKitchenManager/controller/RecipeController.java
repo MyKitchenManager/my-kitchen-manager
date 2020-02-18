@@ -1,9 +1,8 @@
 package com.example.myKitchenManager.controller;
 
-import com.example.myKitchenManager.entity.Recipe;
-import com.example.myKitchenManager.entity.RecipeDetails;
-import com.example.myKitchenManager.entity.Users;
-import com.example.myKitchenManager.gcs.GCSHelper;
+import com.example.myKitchenManager.repository.entity.Recipe;
+import com.example.myKitchenManager.repository.entity.RecipeDetails;
+import com.example.myKitchenManager.repository.entity.Users;
 import com.example.myKitchenManager.repository.RecipeDetailsRepository;
 import com.example.myKitchenManager.repository.RecipeRepository;
 import com.example.myKitchenManager.repository.UserRepository;
@@ -11,7 +10,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.multipart.MultipartFile;
 
 import java.util.List;
 

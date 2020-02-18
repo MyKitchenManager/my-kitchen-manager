@@ -1,7 +1,6 @@
 package com.example.myKitchenManager.repository;
 
-import com.example.myKitchenManager.entity.Inventory;
-import com.example.myKitchenManager.entity.RecipeDetails;
+import com.example.myKitchenManager.repository.entity.RecipeDetails;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;

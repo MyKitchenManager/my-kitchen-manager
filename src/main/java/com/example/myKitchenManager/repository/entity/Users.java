@@ -1,13 +1,10 @@
-package com.example.myKitchenManager.entity;
+package com.example.myKitchenManager.repository.entity;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 //import lombok.Data;
 //import lombok.EqualsAndHashCode;
 
 import javax.persistence.*;
-import javax.persistence.criteria.CriteriaBuilder;
-import java.sql.Timestamp;
+        import java.sql.Timestamp;
 import java.util.List;
 
 

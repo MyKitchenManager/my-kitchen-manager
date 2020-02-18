@@ -1,6 +1,6 @@
 package com.example.myKitchenManager.security;
 
-import com.example.myKitchenManager.entity.Users;
+import com.example.myKitchenManager.repository.entity.Users;
 import com.example.myKitchenManager.repository.UserRepository;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;

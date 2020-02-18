@@ -1,9 +1,8 @@
-package com.example.myKitchenManager.entity;
+package com.example.myKitchenManager.repository.entity;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.*;
-import java.sql.Timestamp;
 import java.util.List;
 
 @Entity

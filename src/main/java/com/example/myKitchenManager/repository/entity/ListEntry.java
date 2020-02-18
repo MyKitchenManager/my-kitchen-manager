@@ -1,7 +1,6 @@
-package com.example.myKitchenManager.entity;
+package com.example.myKitchenManager.repository.entity;
 
 import javax.persistence.*;
-import java.util.List;
 
 @Entity
 @Table(name="list_entry")

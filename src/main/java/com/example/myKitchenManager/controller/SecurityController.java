@@ -1,6 +1,6 @@
 package com.example.myKitchenManager.controller;
 
-import com.example.myKitchenManager.entity.Users;
+import com.example.myKitchenManager.repository.entity.Users;
 import com.example.myKitchenManager.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;

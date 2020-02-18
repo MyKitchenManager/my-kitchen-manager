@@ -1,15 +1,11 @@
-package com.example.myKitchenManager.entity;
+package com.example.myKitchenManager.repository.entity;
 
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
 //import jdk.jfr.DataAmount;
 //import lombok.Data;
 
 import javax.persistence.*;
-import java.util.Date;
 import java.sql.Timestamp;
 
 @Entity

@@ -1,4 +1,4 @@
-package com.example.myKitchenManager.entity;
+package com.example.myKitchenManager.repository.entity;
 
 
 import com.fasterxml.jackson.annotation.JsonIgnore;

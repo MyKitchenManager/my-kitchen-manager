@@ -1,4 +1,4 @@
-package com.example.myKitchenManager.entity;
+package com.example.myKitchenManager.repository.entity;
 
 public class ShoppingResponse {
     private Ingredient i;

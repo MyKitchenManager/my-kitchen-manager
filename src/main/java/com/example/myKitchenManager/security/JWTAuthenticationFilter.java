@@ -1,7 +1,7 @@
 package com.example.myKitchenManager.security;
 
 import com.auth0.jwt.JWT;
-import com.example.myKitchenManager.entity.Users;
+import com.example.myKitchenManager.repository.entity.Users;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;

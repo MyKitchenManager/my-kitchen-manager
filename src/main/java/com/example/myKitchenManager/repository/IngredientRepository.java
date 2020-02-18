@@ -1,6 +1,6 @@
 package com.example.myKitchenManager.repository;
 
-import com.example.myKitchenManager.entity.Ingredient;
+import com.example.myKitchenManager.repository.entity.Ingredient;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.List;

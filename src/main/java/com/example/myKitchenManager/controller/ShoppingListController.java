@@ -1,7 +1,6 @@
 package com.example.myKitchenManager.controller;
 
-import com.example.myKitchenManager.entity.*;
-import com.example.myKitchenManager.repository.InventoryRepository;
+import com.example.myKitchenManager.repository.entity.*;
 import com.example.myKitchenManager.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
