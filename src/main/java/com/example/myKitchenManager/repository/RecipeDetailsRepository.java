@@ -18,4 +18,6 @@ public interface RecipeDetailsRepository extends JpaRepository<RecipeDetails, In
             nativeQuery = true
     )
     void deleteByRecipeId(int recipeId);
+
+    RecipeDetails findByRecipeIdAndIngredientId(int recipeId, int ingredientId);
 }
