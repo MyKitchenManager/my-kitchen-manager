@@ -111,10 +111,9 @@ public class RecipeController {
         recipe.setRecipeDetails(null);
         recipe.setId(id);
         recipeRepository.save(recipe);
+        recipeDetailsRepository.deleteByRecipeId(id);
         for(int i = 0; i <details.size() ; i++){
             RecipeDetails detailsItem = details.get(i);
-            RecipeDetails oldItem = recipeDetailsRepository.findByRecipeIdAndIngredientId(id, detailsItem.getIngredientId());
-            detailsItem.setId(oldItem.getId());
             detailsItem.setRecipeId(id);
             recipeDetailsRepository.save(detailsItem);
         }
