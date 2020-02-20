@@ -66,13 +66,13 @@ public class MealPlanController {
         Users user = userRepository.findByUserId(userId);
         List<MealPlan> mealPlanList = user.getMealPlanList();
 
-        Iterator<MealPlan> itr = mealPlanList.iterator();
-        while(itr.hasNext()) {
-            String status = itr.next().getStatus();
-            if (status != null && status.equals("inactive")) {
-                itr.remove();
-            }
-        }
+//        Iterator<MealPlan> itr = mealPlanList.iterator();
+//        while(itr.hasNext()) {
+//            String status = itr.next().getStatus();
+//            if (status != null && status.equals("inactive")) {
+//                itr.remove();
+//            }
+//        }
         return ResponseEntity.ok(mealPlanList);
     }
 
@@ -133,6 +133,17 @@ public class MealPlanController {
         mealPlanRepository.deleteByMealPlanId(mealPlanId);
         return ResponseEntity.ok("Successfully deleted from mealplan");
 
+    }
+
+    @PostMapping("/revertstatus")
+    public ResponseEntity revertMealPlanStatus(UsernamePasswordAuthenticationToken authentication) {
+        Users user = userRepository.findByUserName(authentication.getName());
+        List<MealPlan> mealPlanList = user.getMealPlanList();
+        for (MealPlan ml : mealPlanList) {
+            ml.setStatus(null);
+            mealPlanRepository.save(ml);
+        }
+        return ResponseEntity.ok("Successfully reverted meal plan status");
     }
 
 

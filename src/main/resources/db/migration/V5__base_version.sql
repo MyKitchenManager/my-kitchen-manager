@@ -1,0 +1,1 @@
+ALTER TABLE recipe MODIFY recipe_image_url varchar(1000);
