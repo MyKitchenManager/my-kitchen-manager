@@ -135,6 +135,17 @@ public class MealPlanController {
 
     }
 
+    @PostMapping("/revertstatus")
+    public ResponseEntity revertMealPlanStatus(UsernamePasswordAuthenticationToken authentication) {
+        Users user = userRepository.findByUserName(authentication.getName());
+        List<MealPlan> mealPlanList = user.getMealPlanList();
+        for (MealPlan ml : mealPlanList) {
+            ml.setStatus(null);
+            mealPlanRepository.save(ml);
+        }
+        return ResponseEntity.ok("Successfully reverted meal plan status");
+    }
+
 
 
 
