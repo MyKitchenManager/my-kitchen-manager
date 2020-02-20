@@ -66,13 +66,13 @@ public class MealPlanController {
         Users user = userRepository.findByUserId(userId);
         List<MealPlan> mealPlanList = user.getMealPlanList();
 
-        Iterator<MealPlan> itr = mealPlanList.iterator();
-        while(itr.hasNext()) {
-            String status = itr.next().getStatus();
-            if (status != null && status.equals("inactive")) {
-                itr.remove();
-            }
-        }
+//        Iterator<MealPlan> itr = mealPlanList.iterator();
+//        while(itr.hasNext()) {
+//            String status = itr.next().getStatus();
+//            if (status != null && status.equals("inactive")) {
+//                itr.remove();
+//            }
+//        }
         return ResponseEntity.ok(mealPlanList);
     }
 
