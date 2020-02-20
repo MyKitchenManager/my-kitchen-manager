@@ -9,6 +9,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestControllerAdvice
 @RequestMapping("/inventory")
 public class InventoryController {
@@ -72,5 +74,17 @@ public class InventoryController {
         int userId = userRepository.findByUserName(authentication.getName()).getUserId();
         Users user = userRepository.findByUserId(userId);
         return ResponseEntity.ok(user.getInventoryList());
+    }
+
+    /**
+     * Add multiple inventory at a time
+     */
+    @PostMapping("/addAll")
+    public ResponseEntity addAllInventory(@RequestBody List<Inventory> inventory, UsernamePasswordAuthenticationToken authentication){
+        for (Inventory i : inventory) {
+            inventoryRepository.save(i);
+        }
+        //return new ResponseEntity<>(HttpStatus.OK);
+        return ResponseEntity.ok("Successful creation of a resource");
     }
 }
