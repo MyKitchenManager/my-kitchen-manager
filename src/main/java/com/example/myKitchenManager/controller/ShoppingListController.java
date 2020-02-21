@@ -71,8 +71,11 @@ public class ShoppingListController {
         }
         List<ShoppingResponse> list = new ArrayList<>();
         for (Map.Entry<Ingredient, Integer> e : shoppingList.entrySet()) {
-            ShoppingResponse sr = new ShoppingResponse(e.getKey(), e.getValue());
-            list.add(sr);
+            if (e.getValue() != 0) {
+                ShoppingResponse sr = new ShoppingResponse(e.getKey(), e.getValue());
+                list.add(sr);
+            }
+
         }
 
         List<ShoppingResponse> inventory = new ArrayList<>();
@@ -83,10 +86,8 @@ public class ShoppingListController {
 
         List<ShoppingResponse> ingredientNeeded = new ArrayList<>();
         for (Map.Entry<Ingredient, Integer> e : shoppingList.entrySet()) {
-            if (e.getValue() != 0) {
-                ShoppingResponse sr = new ShoppingResponse(e.getKey(), e.getValue());
-                ingredientNeeded.add(sr);
-            }
+            ShoppingResponse sr = new ShoppingResponse(e.getKey(), e.getValue());
+            ingredientNeeded.add(sr);
         }
 
         List<List<ShoppingResponse>> res = new ArrayList<>();
