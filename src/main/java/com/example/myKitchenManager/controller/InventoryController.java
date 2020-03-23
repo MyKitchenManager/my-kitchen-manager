@@ -28,7 +28,13 @@ public class InventoryController {
         if (inventory.getUserId() != userRepository.findByUserName(authentication.getName()).getUserId()) {
             return ResponseEntity.badRequest().body("Cannot save to other user's inventory");
         }
-        inventoryRepository.save(inventory);
+        Inventory existingInventory = inventoryRepository.findByIngredientIdAndUserId(inventory.getIngredientId(), inventory.getUserId());
+        if (existingInventory != null) {
+            existingInventory.setInventoryVolume(existingInventory.getInventoryVolume() + inventory.getInventoryVolume());
+            inventoryRepository.save(existingInventory);
+        } else {
+            inventoryRepository.save(inventory);
+        }
         //return new ResponseEntity<>(HttpStatus.OK);
         return ResponseEntity.ok("Successful creation of a resource");
     }
