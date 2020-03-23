@@ -1,0 +1,1 @@
+ALTER TABLE members MODIFY user_name VARCHAR(100) BINARY;
